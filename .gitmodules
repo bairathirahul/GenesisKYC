@@ -1,0 +1,15 @@
+[submodule "GenesisKYC-Server"]
+	path = GenesisKYC-Server
+	url = https://github.com/bairathirahul/GenesisKYC-Server
+[submodule "GenesisKYC-Chaincode"]
+	path = GenesisKYC-Chaincode
+	url = https://github.com/bairathirahul/GenesisKYC-Chaincode
+[submodule "GenesisKYC-User"]
+	path = GenesisKYC-User
+	url = https://github.com/bairathirahul/GenesisKYC-User
+[submodule "GenesisKYC-Persona"]
+	path = GenesisKYC-Persona
+	url = https://github.com/bairathirahul/GenesisKYC-Persona
+[submodule "GenesisKYC-Admin"]
+	path = GenesisKYC-Admin
+	url = https://github.com/bairathirahul/GenesisKYC-Admin
