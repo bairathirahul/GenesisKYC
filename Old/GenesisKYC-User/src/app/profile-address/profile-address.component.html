@@ -1,0 +1,82 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Addresses</mat-card-title>
+    <mat-card-subtitle *ngIf="this.message">{{ this.message }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let address of (addresses | filterDeleted); let i = index" [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Address {{ i + 1 }}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-grid-list cols="12" [gutterSize]="16">
+
+          <mat-grid-tile [colspan]="12">
+            <mat-form-field>
+              <input matInput id="profile-address-street1-{{ i }}" type="text" placeholder="Street 1"
+                     [(ngModel)]="address.street1" required="required" [disabled]="requesting"/>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="12">
+            <mat-form-field>
+              <input matInput id="profile-address-street2-{{ i }}" type="text" placeholder="Street 2"
+                     [(ngModel)]="address.street2" [disabled]="requesting"/>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="6">
+            <mat-form-field>
+              <input matInput id="profile-address-city-{{ i }}" type="text" placeholder="City"
+                     [(ngModel)]="address.city"
+                     [disabled]="requesting"/>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="6">
+            <mat-form-field>
+              <mat-select id="profile-address-state-{{ i }}" placeholder="State" [(ngModel)]="address.state"
+                          required="required" [disabled]="requesting">
+                <mat-option *ngFor="let state of getStates()" [value]="state.abbreviation">{{ state.name
+                  }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="6">
+            <mat-form-field>
+              <input matInput id="profile-address-zip-{{ i }}" type="text" placeholder="Zip" [(ngModel)]="address.zip"
+                     [disabled]="requesting"/>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="6">
+            <mat-form-field>
+              <mat-select id="profile-address-country" placeholder="Country" [(ngModel)]="address.country"
+                          required="required" [disabled]="requesting">
+                <mat-option value="US">United States of America</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+        <mat-action-row>
+          <button mat-button color="warn" (click)="onRemoveClick($event, address)" [disabled]="requesting">Remove
+          </button>
+        </mat-action-row>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-card-actions>
+      <div class="card-submit-button">
+        <button mat-raised-button (click)="onAddNewClick()" type="button" [disabled]="requesting">Add new Address
+        </button>
+        <button mat-raised-button color="primary" type="button" (click)="save()" [disabled]="requesting">Save</button>
+      </div>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

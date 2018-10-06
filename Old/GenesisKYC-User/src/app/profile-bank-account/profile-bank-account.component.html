@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Bank Accounts</mat-card-title>
+    <mat-card-subtitle *ngIf="this.message">{{ this.message }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let bankAccount of (bankAccounts | filterDeleted); let i = index" [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Bank Account {{ i + 1 }}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-grid-list cols="12" [gutterSize]="16">
+
+          <mat-grid-tile [colspan]="6">
+            <mat-form-field>
+              <mat-select id="profile-bank-account-type-{{ i }}" placeholder="Account Type"
+                          [(ngModel)]="bankAccount.accountType" required="required" [disabled]="requesting">
+                <mat-option *ngFor="let accountType of getAccountTypes()" [value]="accountType">{{ accountType }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="6">
+            <mat-form-field>
+              <input matInput id="profile-bank-account-name-{{ i }}" type="text" placeholder="Bank Name"
+                     [(ngModel)]="bankAccount.bankName" required="required" [disabled]="requesting"/>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="12">
+            <mat-form-field>
+              <input matInput id="profile-bank-account-number-{{ i }}" type="text" placeholder="Account Number"
+                     [(ngModel)]="bankAccount.accountNo" required="required" [disabled]="requesting"/>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="12">
+            <mat-form-field>
+              <input matInput id="profile-bank-account-routing-{{ i }}" type="text" placeholder="Routing Number"
+                     [(ngModel)]="bankAccount.routingNo" required="required" [disabled]="requesting"/>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+
+        <mat-action-row>
+          <button mat-button color="warn" (click)="onRemoveClick($event, bankAccount)" [disabled]="requesting">Remove
+          </button>
+        </mat-action-row>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-card-actions>
+      <div class="card-submit-button">
+        <button mat-raised-button (click)="onAddNewClick()" type="button" [disabled]="requesting">Add new Bank Account
+        </button>
+        <button mat-raised-button color="primary" type="button" (click)="save()" [disabled]="requesting">Save</button>
+      </div>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

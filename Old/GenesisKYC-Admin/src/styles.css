@@ -1,0 +1,49 @@
+@import url("~@angular/material/prebuilt-themes/indigo-pink.css");
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #f7f7f7;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  padding: 16px 16px 0;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.search-customer {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px 16px 0;
+}
+
+mat-sidenav {
+  width: 260px;
+}
+mat-form-field {
+  width: 100%;
+}
+.mat-card-header-text {
+  margin: 0 !important;
+}
+mat-card-title {
+  font-size: 24px !important;
+}
+
+.form-container {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.card-submit-button {
+  text-align: right;
+  margin: 0 16px;
+}

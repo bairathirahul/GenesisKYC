@@ -1,0 +1,11 @@
+<div class="container">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let document of customer.documents; let i = index" [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-description>{{ document.documentDesc }}</mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <iframe [src]="getDocumentUrl(document)"></iframe>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

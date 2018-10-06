@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Add Transaction</h1>
+<form (submit)="onSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="Transaction ID" [(ngModel)]="bankTransaction.transactionID" name="transactionID"
+             required="required" [disabled]="requesting"/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Transaction Type" [(ngModel)]="bankTransaction.transactionType" name="transactionType"
+                  required="required" [disabled]="requesting">
+        <mat-option value="Credit">Credit</mat-option>
+        <mat-option value="Debit">Debit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+    <textarea matInput placeholder="Description" [(ngModel)]="bankTransaction.description"
+              name="description" required="required" [disabled]="requesting"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="number" matInput placeholder="Amount" [(ngModel)]="bankTransaction.amount" name="amount"
+             required="required" [disabled]="requesting"/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="transactionDate" placeholder="Transaction Date"
+             [(ngModel)]="bankTransaction.transactionDate" name="transactionDate" required="required" [disabled]="requesting"/>
+      <mat-datepicker-toggle matSuffix [for]="transactionDate"></mat-datepicker-toggle>
+      <mat-datepicker #transactionDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button type="submit" mat-raised-button>Save</button>
+    <button mat-button [mat-dialog-close]="false">Cancel</button>
+  </div>
+</form>
+

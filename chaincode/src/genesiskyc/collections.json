@@ -1,0 +1,30 @@
+[
+    {
+       "name": "BankXMSP",
+       "policy": "OR('BankXMSP.member')",
+       "requiredPeerCount": 0,
+       "maxPeerCount": 3,
+       "blockToLive":0
+    },
+    {
+        "name": "BankYMSP",
+        "policy": "OR('BankYMSP.member')",
+        "requiredPeerCount": 0,
+        "maxPeerCount": 3,
+        "blockToLive":0
+     },
+     {
+        "name": "BankZMSP",
+        "policy": "OR('BankZMSP.member')",
+        "requiredPeerCount": 0,
+        "maxPeerCount": 3,
+        "blockToLive":0
+     },
+     {
+        "name": "BankXMSP|BankYMSP",
+        "policy": "OR('BankXMSP.member', BankYMSP.member)",
+        "requiredPeerCount": 0,
+        "maxPeerCount": 3,
+        "blockToLive":0
+     }
+]

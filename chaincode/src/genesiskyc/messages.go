@@ -1,0 +1,21 @@
+package genesiskyc
+
+const errorChaincodeInit = "Error in instantitating the chaincode"
+const errorChaincodeMethod = "No method with name %s"
+const errorChaincodeNumArgs = "Incorrect number of input arguments, expected %d"
+const errorChaincodeCaller = "Cannot identify the chaincode caller"
+const errorChaincodeArgAmount = "Invalid value for the parameter \"Amount\", must be numeric"
+const errorChaincodeArgDueDate = "Invalid value for the parameter \"DueDate\", must be a date like 1970-01-01"
+const errorChaincodeArgEPD = "Invalid value for the parameter \"EarlyPaymentDiscount\", must be numeric"
+const errorChaincodeArgEPE = "Invalid value for the parameter \"EarlyPaymentExpiry\", must be a date like 1970-01-01"
+const errorChaincodeLedger = "Error in connecting to the Ledger"
+
+const errorCustomerExists = "Customer already exists"
+const errorCustomerAuth = "You do not have authorization to read this customer"
+const errorCustomerNotFound = "No customer found with ID %s"
+const errorCustomerNoField = "Invalid customer field %s"
+const errorCustomerNoFieldValue = "No value provided for the field %s"
+const errorCustomerImutableField = "The value for %s cannot be modified"
+const errorRequestMalformed = "Malformed request"
+const errorUnexpected = "Unexpected error has occurred"
+const successChaincodeInit = "Chaincode instantitated"

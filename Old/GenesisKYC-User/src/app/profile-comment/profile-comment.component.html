@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Administrator Comments</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let comment of comments">
+          <p mat-line>{{comment.text}}</p>
+          <p mat-line><small>{{ comment.created | date:'medium' }}</small></p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card-content>
+</mat-card>

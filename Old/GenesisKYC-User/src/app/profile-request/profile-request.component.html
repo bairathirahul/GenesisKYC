@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Access Requests</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let persona of personas">
+        <h4 mat-line>{{ persona }}</h4>
+        <button *ngIf="!this.accesses[persona]" mat-button (click)="onApproveClick(persona)">
+          Approve
+        </button>
+        <mat-icon *ngIf="this.accesses[persona]" class="mat-24">done</mat-icon>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

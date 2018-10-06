@@ -1,0 +1,27 @@
+<div class="search-customer">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Customers</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (submit)="onSubmit()">
+        <mat-form-field>
+          <input matInput [(ngModel)]="query" placeholder="Search Customers by SSN, Passport or Email" name="query"
+                 [disabled]="requesting"/>
+        </mat-form-field>
+      </form>
+
+      <p *ngIf="service.getCustomers() && service.getCustomers().length == 0">Sorry no results found</p>
+
+      <mat-nav-list *ngIf="service.getCustomers() && service.getCustomers().length > 0">
+        <a href="#" mat-list-item *ngFor="let customer of service.getCustomers()" (click)="onCustomerClick($event, customer)">
+          <mat-icon mat-list-icon class="mat-36">{{ getStatusIcon(customer) }}</mat-icon>
+          <h4 mat-line>{{ getCustomerName(customer) }}</h4>
+          <p mat-line>{{ customer.basicInfo.ssn }}</p>
+          <mat-icon class="mat-24">{{ getApprovalStatusIcon(customer) }}</mat-icon>
+        </a>
+      </mat-nav-list>
+
+    </mat-card-content>
+  </mat-card>
+</div>

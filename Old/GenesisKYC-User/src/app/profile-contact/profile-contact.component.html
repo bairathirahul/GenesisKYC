@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Contact Information</mat-card-title>
+    <mat-card-subtitle *ngIf="this.message">{{ this.message }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-grid-list cols="12" [gutterSize]="16">
+
+      <mat-grid-tile [colspan]="6">
+        <mat-form-field>
+          <input matInput id="profile-contact-home-number" type="tel" placeholder="Home Phone Number"
+                 [(ngModel)]="contact.homeNumber" [disabled]="requesting"/>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6">
+        <mat-form-field>
+          <input matInput id="profile-contact-work-number" type="tel" placeholder="Work Phone Number"
+                 [(ngModel)]="contact.workNumber" [disabled]="requesting"/>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6">
+        <mat-form-field>
+          <input matInput id="profile-contact-mobile-number" type="tel" placeholder="Mobile Phone Number"
+                 [(ngModel)]="contact.mobileNumber" [disabled]="requesting"/>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6">
+        <mat-form-field>
+          <input matInput id="profile-contact-email-address" type="email" placeholder="Email Address"
+                 [(ngModel)]="contact.emailAddress" required="required" [disabled]="requesting"/>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12">
+        <mat-form-field>
+          <mat-select id="profile-contact-primary-contact" placeholder="Primary Contact" [(ngModel)]="contact.primaryContact"
+                      required="required" [disabled]="requesting">
+            <mat-option *ngFor="let primaryContact of getPrimaryContacts()" [value]="primaryContact">{{ primaryContact
+              }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-card-actions>
+      <div class="card-submit-button">
+        <button mat-raised-button color="primary" type="button" (click)="save()" [disabled]="requesting">Save</button>
+      </div>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

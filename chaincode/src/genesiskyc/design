@@ -1,0 +1,11 @@
+MSP
+    -> customer
+    -> retail
+    -> corporate
+    -> kyc
+
+-> Customer register as an individual
+-> Customer corporate
+-> Customer registers and a profile is created
+-> Customer updates his profile
+-> 

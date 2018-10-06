@@ -1,0 +1,76 @@
+# Organizations
+Organizations:
+  - &BankX
+    Name: BankX
+    ID: BankXMSP
+    MSPDir: crypto-config/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('BankXMSP.admin', 'BankXMSP.peer', 'BankXMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('BankXMSP.admin', 'BankXMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('BankXMSP.admin')"
+    AnchorPeers:
+      - Host: peer0.BankX.org
+        Port: 7051
+
+# Default Capabilities for each level
+Capabilities:
+  Global: &ChannelCapabilities
+    V1_1: true
+
+  Orderer: &OrdererCapabilities
+    V1_1: true
+
+  Application: &ApplicationCapabilities
+    V1_1: true
+
+# Orderer configuration
+Orderer: &OrdererDefaults
+  OrdererType: kafka
+  Addresses:
+    - orderer.BankX.org:7050
+  Kafka:
+    Brokers:
+      - kafka1.BankX.org:9092
+      - kafka2.BankX.org:9092
+      - kafka3.BankX.org:9092
+      - kafka4.BankX.org:9092
+  Organizations:
+    - *BankX
+  Capabilities:
+    <<: *OrdererCapabilities
+
+# Application-side configuration
+Application: &ApplicationDefaults
+  Organizations:
+    - *BankX
+  Capabilities:
+    - *ApplicationCapabilities
+
+# Top level channel configuration
+Channel: &ChannelDefaults
+  Capabilities:
+    <<: *ChannelCapabilities
+
+# Profile definitions
+Profiles:
+  # Orderer Genesis
+  InvoiceGenesis:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+    Consortiums:
+      InvoiceConsortium:
+        Organizations:
+          - *BankX
+
+  InvoiceChannel:
+    <<: *ChannelDefaults
+    Consortium: InvoiceConsortium
+    Application:
+      <<: *ApplicationDefaults

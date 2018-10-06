@@ -1,0 +1,29 @@
+# ---------------------------------------------------------------------------
+# Defining Network Orderer Organization
+# ---------------------------------------------------------------------------
+OrdererOrgs:
+  - Name: Orderer
+    Domain: orderer.compx.org
+    CA:
+      Country: US
+      Province: North Carolina
+      Locality: Charlotte
+
+    # Orderer host definition
+    Specs:
+      - Hostname: orderer
+
+# ---------------------------------------------------------------------------
+# Defining Peer Organization
+# ---------------------------------------------------------------------------
+PeerOrgs:
+  - Name: CompX
+    Domain: org.compx.org
+    EnableNodeOUs: true
+
+    # Peer hosts definition
+    Specs:
+      - Hostname: peer0
+      - Hostname: peer1
+    Users:
+      Count: 1

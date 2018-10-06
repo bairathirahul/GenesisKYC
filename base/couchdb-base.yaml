@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  couchdb-base:
+    image: hyperledger/fabric-couchdb
+    environment:
+      - COUCHDB_USER=
+      - COUCHDB_PASSWORD=

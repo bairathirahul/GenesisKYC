@@ -1,0 +1,20 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Customers</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <p *ngIf="service.getCustomers() && service.getCustomers().length == 0">No customers are pending verification</p>
+
+      <mat-nav-list *ngIf="service.getCustomers() && service.getCustomers().length > 0">
+        <mat-list-item *ngFor="let customer of service.getCustomers()" (click)="onCustomerClick($event, customer)">
+          <h4 mat-line>{{ getCustomerName(customer) }}</h4>
+          <p mat-line>SSN: {{ customer.basicInfo.ssn }}</p>
+          <mat-icon class="mat-24">{{ getStatusIcon(customer) }}</mat-icon>
+        </mat-list-item>
+      </mat-nav-list>
+
+    </mat-card-content>
+  </mat-card>
+</div>
